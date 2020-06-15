@@ -1,0 +1,27 @@
+; I pledge my Honor that I have not cheated, and will not cheat on this assignment - Muhammad Siddiqui- U45454522
+
+rdn 1
+rdn 2
+str 1 0 1 ; store bin num at location 0 of bin(i) 
+str 1 1 2 ; store result at location 1 of bin(i)
+
+#LOOP: beq 1 0 #SHOWBINS ; if bin number == 0 loop will exit 
+rdn 1
+rdn 2
+lod 3 1 0 
+beq 3 0 #CREATEBIN ; create new bin if bin doesnt already exist 
+lod 4 1 1		   ; load the bin value 
+mul 5 4 2			; Multiply previous value with the new value 
+str 1 1 5			;store the result in the bin 
+jmp 0 #LOOP
+
+#CREATEBIN: str 1 0 1
+str 1 1 2
+jmp 0 #LOOP
+
+#SHOWBINS:
+rdn 1 
+lod 2 1 1		;load bin address
+ptn 2			; show bin result 
+
+hlt 0			;finish with code 0

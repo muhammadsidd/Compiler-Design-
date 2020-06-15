@@ -1,0 +1,52 @@
+//I pledge my Honor that I have not cheated, and will not cheat on this assignment - Muhammad Siddiqui- U45454522
+
+//linked list object to store the bins and their information 
+class Bin extends Object {
+
+	nat value;
+	nat result;
+	Bin next = new Bin(); //linked to the next list 
+}
+
+main {
+	Bin bin;
+	nat temp;
+	nat num;
+	nat check;
+	
+	bin = new Bin();
+	bin.value = readNat();
+	num = readNat();
+	bin.result = num;
+//ask user to read the number until 0 is seen as the bin number 
+	for(0; !(temp == 0); 0){
+		temp = readNat();
+		num = readNat();
+//if bin already exists update the result 
+		if(temp == bin.value){
+			bin.result = bin.result*num;
+		}
+		else{
+			bin = bin.next;
+			bin.value = temp;
+			bin.result = num;
+		}
+		
+	}
+//ask user to enter the first natural number after first 0 is seen 
+	check = readNat();
+//if users doesnt enter 0 then print the result/value of the bin on the console
+	if(check != 0){
+		for(0; !(bin == null); 0){
+			if(check == bin.value){ 
+				printNat(bin.result);
+			}
+			else{
+				bin = bin.next;
+			}
+		}
+	}
+	else{
+		printNat(0);
+	}
+}
